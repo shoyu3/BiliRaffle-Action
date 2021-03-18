@@ -1,0 +1,390 @@
+
+<html>
+<head>
+<link rel="icon" href="/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" 
+	content="
+		width=device-width,
+		initial-scale=1.0,
+		minimum-scale=1.0,
+		maximum-scale=1.0,
+		user-scalable=no"><meta charset=utf-8 />
+<title>哔哩哔哩实用工具 Bili.fan</title>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+@font-face{font-family:"ComicsansMS";src:url("comic_sans_MS.woff") format("woff");}
+
+.bg{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width:100%;
+                height:100%;
+                zoom: 1;
+                background-color: #fff;
+                background-repeat: no-repeat;
+                background-size: cover;
+background-attachment: fixed;
+                -webkit-background-size: cover;
+                -o-background-size: cover;
+                background-position: center 0;
+overflow-y:hidden;
+overflow-x:hidden;
+            }
+
+input:not([type=submit]):not([type=checkbox]) {
+       text-align:center;
+	width: 100%;
+	//padding: 10px;
+border-radius: 3px;
+	font-size: 1.6rem;
+	border: 1px solid #D8D8D8;
+	//margin-top: 5px;
+	transition: box-shadow 0.5s, border 0.5s;
+	-webkit-appearance: none;
+	//border-radius: 0;
+	height: 45px;
+        background-color: rgba(255, 255, 255, 0.5);
+}
+
+input:not([type=submit]):not([type=checkbox]):focus {
+border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+input[type=submit] {
+	font-size: 1.4rem;
+	padding: 10px;
+	border-radius: 3px;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input::-webkit-input-placeholder{
+color:#555;
+}
+
+button {
+	background: #F9F9F9;
+	border: 1px solid #D3D3D3;
+	transition: background 0.5s;
+	cursor: pointer;
+	margin: 0;
+	padding: 7px;
+	display: inline-block;
+        border-radius: 3px;
+}
+
+button:hover {
+	background: #E2E2E2;
+}
+
+.content {
+position:fixed;top:0;bottom:0;left:0;right:0;
+ height:100%;
+/*   background-color:rgba(250,253,188,0.7); */
+background-color:rgba(0,0,0,0.5);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  color: #b0a0f0;
+font-weight:bold;
+text-align:center;
+overflow:auto;
+}
+
+a{
+      margin: 0;
+      //color:#3090d0;
+color:#66CCCC;
+      text-decoration: none;
+      font-size: 20px;
+	  text-align:center;
+font-weight:bold;
+    }
+
+.short,.nickname {
+text-align:center;
+}
+
+.cent{/*
+    //position: fixed;
+position: absolute;width:100%;height:300px;left:50%;top:50%; 
+margin-left:-50%;margin-top:-280px;*/
+}
+
+.footer{
+position:fixed;
+margin:0 auto;
+left:0;
+right:0;
+bottom:0px}
+
+h1,h2{
+ margin:0;
+ padding:0;
+}
+textarea {
+    background-color: rgba(255, 255, 255, 0.5);
+    resize: none;
+    text-align: center;
+    width: 100%;
+    padding: 1px;
+    border-radius: 3px;
+    font-size: 1rem;
+    border: 1px solid #D8D8D8;
+    //margin-top: 5px;
+    transition: box-shadow 0.5s, border 0.5s;
+    -webkit-appearance: none;
+    //border-radius: 0;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+textarea:focus {
+border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+/*
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+	-webkit-appearance: none !important;
+	margin: 0;
+}*/
+</style>
+<script type="text/javascript">
+    //判断时间是否为个位数，如果时间为个位数就在时间之前补上一个“0”
+	function check(val) {
+		if (val < 10) {
+			return ("0" + val);
+		} 
+		else {
+			return (val);
+		}
+	}
+	function displayTime() {
+		//获取div元素
+		var timeDiv=document.getElementById("timeDiv");
+		//获取系统当前的年、月、日、小时、分钟、毫秒
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var day = date.getDate();
+		var hour = date.getHours();
+		var minutes = date.getMinutes();
+		var second = date.getSeconds();
+		var timestr = year + "-" + month + "-" + day + " " + check(hour)
+				+ ":" + check(minutes) + ":" + check(second);
+		//将系统时间设置到div元素中
+		timeDiv.innerHTML = timestr;
+	}
+	//每隔1秒调用一次displayTime函数;border-radius:50px
+	function start(){
+        window.setInterval("displayTime()",1000)//单位是毫秒
+}
+</script>
+</head>
+<body onload="start();"><center>
+<div class="bg" id="bg">
+<div class="content">
+<div class="cent">
+<div id="timeDiv" style="text-align:center;font-weight:bold;font-family:ComicsansMS;">Loading...</div>
+<h1>动态抽奖工具</h1>
+<h2><a href="/tools">返回</a></h2>
+<hr>
+<div class="short">
+<b>动态链接 (支持b23.tv格式)</b><br>
+<input id="b23tv" placeholder="输入链接" style="width:90%;" /><br><br>
+<b>抽奖条件</b><br>
+<label>
+<input type="checkbox" id="tzf" name="tzf" checked/>转发
+</label><label>
+<input type="checkbox" id="tpl" name="tpl" />评论
+</label><label>
+<input type="checkbox" id="tdz" name="tdz" />点赞
+</label><label>
+<input type="checkbox" id="tgz" name="tgz" onclick="gzcook()" checked/>关注
+</label><br><br>
+<b>中奖人数</b><br>
+<input id="numb" type="text" placeholder="1" maxlength="5" value="1" onkeyup = "value=value.replace(/[^\d]/g,'')" / style="width:90px;" />
+<br>
+<div id="cookdiv" style="display:block;"><br>
+<b>登录cookie (检测关注用)</b> <a href="/tools/login">点此获取</a>
+<textarea id="cook" style="resize: none; margin: 0px; width: 90%; height: 90px;"></textarea><br>
+</div>
+<button id="button1" onClick="getlink();">确认</button><br>
+<div id="result" style="display:none;">
+<br>
+<font>输出结果</font><br>
+<input id="surl" placeholder="" onClick="copy();" style="width:90%;" readonly><br></div>
+<font id="copyok"></font>
+</div><hr>
+<font style="color:orange;">注意：1.转发数量超过575的部分无法被统计 2.评论统计不包含楼中楼</font><br>
+© 2021 <a href="https://bili.fan">Bili.fan</a>
+<div class="footer"></div>
+</div></div></div></center>
+</body>
+<script>
+var system ={};
+	var p = navigator.platform;
+       system.win = p.indexOf("Win") == 0;
+       system.mac = p.indexOf("Mac") == 0;
+       system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+       if(system.win||system.mac||system.xll){//如果是电脑
+document.getElementById("bg").style='background: url("https://ae01.alicdn.com/kf/U303d12ed946648bda35533a96bb831fbm.jpg");background-repeat: no-repeat;background-size: cover;background-attachment: fixed;-webkit-background-size: cover;-o-background-size: cover;background-position: center 0;';
+}else{
+  //如果是手机
+document.getElementById("bg").style='background: url(https://ae01.alicdn.com/kf/U4881fc652a68435b8890236976013ea95.jpg);background-repeat: no-repeat;background-size: cover;background-attachment: fixed;-webkit-background-size: cover;-o-background-size: cover;background-position: center 0;';
+}
+
+function cookieToJson(co) {
+    let cookieArr = co.split(";");
+    let obj = {} 
+    cookieArr.forEach((i) => {
+        let arr = i.split("=");
+        obj[arr[0]] =arr[1];
+    });
+    return obj
+ }
+
+function getlink(){
+if (document.getElementById("b23tv").value==''){
+document.getElementById("result").style="display:none;";
+document.getElementById("copyok").innerHTML="链接为空!";
+document.getElementById("copyok").style="color:red";
+return false;
+}
+if ((document.getElementById("b23tv").value.indexOf("t.bilibili.com") == -1 ) && (document.getElementById("b23tv").value.indexOf("b23.tv") == -1 )){
+document.getElementById("result").style="display:none;";
+document.getElementById("copyok").innerHTML="链接格式不正确!";
+document.getElementById("copyok").style="color:red";
+return false;
+}
+document.getElementById("result").style="display:none;";
+document.getElementById("copyok").innerHTML="请稍等……";
+document.getElementById("copyok").style="color:gray";
+tlink = document.getElementById("b23tv").value
+var tlink2 = tlink .lastIndexOf("/");
+var tlink3 = tlink.substring(tlink2 + 1, tlink.length)
+if(tlink3.indexOf("?") != -1){
+    tlink = tlink3.split("?")[0];
+//console.log(tlink);
+}
+if ((document.getElementById("b23tv").value.indexOf("b23.tv") == -1 )){
+cookie=''
+type=0
+if(document.getElementById("tzf").checked){
+type=type+1
+}
+if(document.getElementById("tpl").checked){
+type=type+2
+}
+if(document.getElementById("tdz").checked){
+type=type+4
+}
+if(document.getElementById("tgz").checked){
+type=type+8
+locookie=document.getElementById("cook").value
+if (locookie!=''){
+try{
+locookie2 = locookie.replace(/\s*/g,"");
+locookie = locookie2;
+locookiej=cookieToJson(locookie);
+}
+catch{
+document.getElementById("copyok").innerHTML="cookie无效!";
+document.getElementById("copyok").style="color:red";
+return false;
+}
+if(locookiej['bili_jct']==undefined){
+document.getElementById("copyok").innerHTML="cookie无效!";
+document.getElementById("copyok").style="color:red";
+return false;
+}}else{
+document.getElementById("copyok").innerHTML="请输入cookie!";
+document.getElementById("copyok").style="color:red";
+return false;
+}}else{
+locookie='';
+}
+if(document.getElementById("numb").value<1){
+document.getElementById("numb").value=1;
+/*
+document.getElementById("copyok").innerHTML="获奖者数量小于1!";
+document.getElementById("copyok").style="color:red";
+return false;
+*/
+}
+if (type==0){
+document.getElementById("copyok").innerHTML="请至少选中一个抽奖条件!";
+document.getElementById("copyok").style="color:red";
+return false;
+}
+window.open("https://tech.shoyu.top/cj/?type="+type+"&dyid="+tlink+"&hjnum="+document.getElementById("numb").value+"&cookie="+locookie);
+document.getElementById("copyok").innerHTML=" 已在新窗口开启抽奖页面！";
+document.getElementById("copyok").style="color:lime";
+}else{
+//b23.tv link
+var url="https://bili.fan/api/checkjump.php?link="+tlink;
+$.get(url,function(data,status){
+document.getElementById("b23tv").value=data;
+document.getElementById("copyok").innerHTML="已将短链转换为正常链接，请再次点击确认!";
+document.getElementById("copyok").style="color:lime";
+});
+}}/*
+else{
+document.getElementById("result").style="display:none;";
+document.getElementById("copyok").innerHTML="链接为空!";
+document.getElementById("copyok").style="color:red";
+}*/
+/*
+document.getElementById('b23tv').addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+        getlink();
+    };
+});
+document.getElementById('numb').addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+        getlink();
+    };
+});*/
+function gzcook(){
+if (document.getElementById("tgz").checked){
+document.getElementById("cookdiv").style="display:block;";
+}else{
+document.getElementById("cookdiv").style="display:none;";
+}}
+</script>
+<style>
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+  width: 5px;
+  background-color: rgba(127, 127, 127, 0.2);
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #E53935;
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+  background-color: #E53935;
+}
+</style>
+</html>
