@@ -1,0 +1,1 @@
+替换index.html中的yourdomain.here为自己的网站
